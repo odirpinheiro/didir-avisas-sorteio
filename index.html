@@ -61,13 +61,13 @@
 
     async function carregarDados() {
         try {
-            // O "?t=" + Date.now() força o navegador a baixar a versão nova e ignorar o cache
+            // O "?t=" força o navegador a baixar a versão nova do VPS
             const response = await fetch('data.json?t=' + Date.now());
             const dados = await response.json();
             renderizar(dados.valor_arrecadado);
         } catch (err) {
-            console.error("Erro ao carregar data.json:", err);
-            renderizar(0); // Mostra 0 se der erro
+            console.error("Erro ao carregar metas:", err);
+            renderizar(0); 
         }
     }
 
@@ -79,7 +79,7 @@
         document.getElementById('percentage-marker').innerText = Math.floor(Math.min(porc, 100)) + '%';
         
         const container = document.getElementById('markers');
-        container.innerHTML = ''; // Limpa antes de renderizar
+        container.innerHTML = ''; 
         let textoStatus = "Ajude o Didir e vamos melhorar o sorteio! 📈";
 
         premios.forEach(p => {
